@@ -3,7 +3,7 @@
 #     (ex. maman-breathwork/expansion-breathwork). Voir INSTALLATION.txt.
 backend:
   name: github
-  repo: VOTRE-COMPTE/VOTRE-DEPOT
+  repo: p4ul28/expansion-breathwork
   branch: main
 
 locale: fr
