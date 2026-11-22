@@ -1,0 +1,54 @@
+# Configuration de l'espace admin (Decap CMS)
+# >>> À MODIFIER : remplacer VOTRE-COMPTE/VOTRE-DEPOT par le nom du dépôt GitHub
+#     (ex. maman-breathwork/expansion-breathwork). Voir INSTALLATION.txt.
+backend:
+  name: github
+  repo: VOTRE-COMPTE/VOTRE-DEPOT
+  branch: main
+
+locale: fr
+site_url: /
+media_folder: "audios"
+public_folder: "/audios"
+
+collections:
+  - name: "site"
+    label: "Expansion Breathwork"
+    files:
+      - name: "audios"
+        label: "Mes audios"
+        file: "audios.json"
+        fields:
+          - label: "Contact / réservation"
+            name: "contact"
+            widget: "string"
+            required: false
+            hint: "Un lien (https://…) affiche un bouton « Réserver une séance ». Un email ou un numéro s'affiche en texte. Laisser vide pour ne rien afficher."
+          - label: "Audios"
+            name: "audios"
+            widget: "list"
+            label_singular: "audio"
+            summary: "{{fields.title}}"
+            fields:
+              - label: "Fichier audio"
+                name: "file"
+                widget: "file"
+                choose_url: false
+                hint: "Fichier mp3, m4a ou wav (idéalement moins de 25 Mo)."
+              - label: "Titre"
+                name: "title"
+                widget: "string"
+              - label: "Catégorie"
+                name: "category"
+                widget: "select"
+                options: ["Séance guidée", "Méditation", "Relaxation", "Énergie", "Autre"]
+                default: "Séance guidée"
+              - label: "Description"
+                name: "description"
+                widget: "text"
+                required: false
+              - label: "Date de mise en ligne (les plus récents s'affichent en premier)"
+                name: "date"
+                widget: "datetime"
+                default: "{{now}}"
+                required: false
